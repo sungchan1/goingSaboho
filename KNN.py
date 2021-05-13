@@ -12,18 +12,14 @@ from lightgbm import LGBMClassifier
 from imblearn.over_sampling import SMOTE
 from sklearn.neighbors import KNeighborsClassifier
 
-
 k_list = range(1,101)
 accuracies_before_OverSampling = []
 accuracies_after_OverSampling = []
-
 
 df = pd.read_csv('creditcard.csv')
 X = df.iloc[:,:-1]
 y = df.iloc[:,-1]
 smote = SMOTE(random_state=0)
-
-
 # devide train, test -> over Sampling
 print("------------- 오버 샘플링 나중 ----------------")
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.25,random_state=10)
@@ -33,14 +29,11 @@ for k in k_list:
     classifier.fit(X_train_over, y_train_over)
     # print(classifier.score(X_test, y_test))
     accuracies_before_OverSampling.append(classifier.score(X_test, y_test))
-
 plt.plot(k_list, accuracies_before_OverSampling)
 plt.xlabel("k")
 plt.ylabel("Validation Accuracy")
 plt.title("Breast Cancer Classifier Accuracy")
 plt.show()
-
-
 
 # over Sampling  -> devide train, test
 print("------------- 오버 샘플링 먼저 ----------------")
