@@ -17,7 +17,6 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV
 import numpy as np
 
-import time
 
 pricision_list = list()
 recall_list = list ()
@@ -65,8 +64,6 @@ def plot_learning_curve(estimator, x, y, ylim=None, cv=None, n_jobs=-1, train_si
 
 
 
-
-
 df = pd.read_csv('creditcard.csv')
 df = df.sample(frac=1)
 # df.Class.value_counts(normalize=True).plot(kind='bar')
@@ -89,43 +86,14 @@ leaves = range(2,64)
 ratio = list()
 ratio_train = list()
 
-
-
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size= 0.3, random_state=10)
-smote = SMOTE( sampling_strategy= 0.2, random_state=0 )
-X_train_over,y_train_over = smote.fit_resample(X_train,y_train)
-# lgb = LGBMClassifier( n_estimators=400,n_jobs=-1,max_depth  = 30 , num_leaves = 20, device = 'gpu', boost_from_average=False,  min_data_in_leaf = 320 )
-
-lgb = LGBMClassifier( device = 'gpu')
-modeling(lgb,X_train_over,X_test,y_train_over,y_test)
-
-
-# lgb.fit(X_train,y_train)
-
-
-# timelist = list()
-# for i in range(50) :
-#     before = time.time()
-#     pred = lgb.predict(X_test)
-#     after = time.time()
-#     how = after - before
-#     print ("time : ",  how)
-#     timelist.append(how)
-
-# print(np.std(timelist))
-# print(np.mean(timelist))
-
-
-
-# for i in range(1, 11) :
-#     ratio.append(i*0.1)
-#     ratio_train.append(i*0.1)
+for i in range(1, 11) :
+    ratio.append(i*0.1)
+    ratio_train.append(i*0.1)
 
     
 
 # min_data_list = range(100, 1000, 10)
 # min_child_samples_list = range (100, 5000, 100)
-
 # for rT in ratio_train:
 #     round(rT,2)
 #     for r in ratio:
@@ -134,7 +102,6 @@ modeling(lgb,X_train_over,X_test,y_train_over,y_test)
 #         smote = SMOTE( sampling_strategy= r , random_state=0 )
 #         X_train_over,y_train_over = smote.fit_resample(X_train,y_train)
 #         lgb = LGBMClassifier( n_estimators=400,n_jobs=-1,max_depth  = 30 , num_leaves = 20, device = 'gpu', boost_from_average=False,  min_data_in_leaf = 320 )
-#         lgb = LGBMClassifier()
 #         print("Over Sampling Ratio : ", r , end="")
 #         print("Train, Test Ratio : ", rT , end="")
 #         # print("leaf number : ", leaf , end=" ")
@@ -146,8 +113,7 @@ modeling(lgb,X_train_over,X_test,y_train_over,y_test)
 #     plt.title('Test Ratio '+str(rT), fontsize=14)
 #     plt.plot(ratio, pricision_list, 'o-', color="#ff7473", label= "precision")
 #     plt.plot(ratio, recall_list, 'o-', color="#ffc952", label= "recall")
-#     plt.plot(ratio, f1_score_list, 'o-', color="#47b8e0", 
-#     label= "f1")
+#     plt.plot(ratio, f1_score_list, 'o-', color="#47b8e0", label= "f1")
 #     plt.xlabel('OverSampling Ratio' )
 #     plt.ylabel("Score")
 #     # 그림에 선 표시
@@ -159,6 +125,9 @@ modeling(lgb,X_train_over,X_test,y_train_over,y_test)
 #     pricision_list = list()
 #     recall_list = list ()
 #     f1_score_list = list()
+
+
+
         
 
 
