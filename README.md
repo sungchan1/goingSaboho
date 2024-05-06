@@ -2,7 +2,8 @@
 
 ![데이터 세트](https://github.com/sungchan1/Detecting-fraud-credit-card-transaction/assets/28076127/e17b2a3f-eae6-4e47-a5d8-cd0be50f2ed9)
 
-이 프로젝트는 신용카드 거래내역을 기반으로 한 부정거래를 탐지하기 위해 머신러닝 및 딥러닝 모델을 개발하였습니다. 주어진 데이터셋은 [Kaggle](https://www.kaggle.com/mlg-ulb/creditcardfraud)에서 제공됩니다.
+이 프로젝트는 신용카드 거래내역을 기반으로 한 부정거래를 탐지하기 위해 머신러닝 및 딥러닝 모델링
+데이터셋은 [Kaggle](https://www.kaggle.com/mlg-ulb/creditcardfraud) 사용
 
 ## 전체 과정
 
